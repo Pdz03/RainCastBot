@@ -65,7 +65,11 @@ async def handle_webhook(update: TelegramUpdate, token: str = Depends(auth_teleg
         else:
             db.users.insert_one(user)
 
-        await bot.send_message(chat_id=chat_id, reply_to_message_id=update.message["message_id"], text="Selamat datang di Pdz Cloud, silakan upload filemu di sini!\n\nTekan /help untuk informasi lebih lanjut")
+        await bot.send_message(chat_id=chat_id, reply_to_message_id=update.message["message_id"], text=
+                               '''Selamat Datang di RainCast ID Bot!
+                               Di sini anda dapat menerima notifikasi harian berupa prediksi curah hujan berdasarkan lokasi yang anda simpan.
+                               
+                               Pilih /menu untuk melihat menu yang ada di RainCast ID Bot''')
     elif text == "/help":
         await bot.send_message(chat_id=chat_id, reply_to_message_id=update.message["message_id"], text="Selamat datang di Pdz Cloud, anda dapat mengupload file apa saja di sini.\n\nJadikan bot ini sebagai media penyimpanan pribadimu.\n\nGunakan bot ini dengan bijak.\n\nJika terjadi kendala selama penggunaan bot, hubungi akun ini @Pdz03\n\nTerimakasih")
     elif "forward_origin" in update.message:
